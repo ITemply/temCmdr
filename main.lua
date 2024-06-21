@@ -142,3 +142,5 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
         end 
     end
 end)
+
+print('LOADED TEM CMDR\n\nTem Cmdr has been loaded and is now ready for use via clients.\nIf you wish to change the authorized users, please use the update command while the script is running or rerun the script with a new userid.')
