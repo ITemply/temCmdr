@@ -17,8 +17,8 @@ local activeStatus = true
 local needAuthorization = true
 local currentExecutor = ''
 
-local getArgs = function(commandString) 
-    local usernameSep = commandString:split(';')[2] 
+local getArgs = function(commandString)
+    local usernameSep = commandString:split(';')[2]
     local args = usernameSep:split(' ')
   
     return args
@@ -28,7 +28,7 @@ local addCommand = function(commandName, commandFunction)
     commandArray[commandName] = commandFunction
 end
 
-local commandCheck = function(args, command) 
+local commandCheck = function(args, command)
     if args[1] == command then
         return true
     end
@@ -36,17 +36,17 @@ local commandCheck = function(args, command) 
     return false
 end
 
-local getExePlayer = function(playerIdString) 
+local getExePlayer = function(playerIdString)
     for id, player in ipairs(players:GetPlayers()) do
-        if player.UserId == tonumber(playerIdString) then 
+        if player.UserId == tonumber(playerIdString) then
             return player
-        end 
+        end
     end
 
     return false
 end
   
-local warnError = function(warnReason) 
+local warnError = function(warnReason)
     if client.Backpack:FindFirstChild('Sign') then
         local tool = client.Backpack:WaitForChild('Sign')
         local humanoid = client.Character.Humanoid
@@ -54,11 +54,11 @@ local warnError = function(warnReason) 
     
         local warnArgs = {[1] = warnReason}
 
-        signEvent:FireServer(unpack(warnArgs)) 
+        signEvent:FireServer(unpack(warnArgs))
     elseif client.Character:FindFirstChild('Sign') then
         local warnArgs = {[1] = warnReason}
 
-        signEvent:FireServer(unpack(warnArgs)) 
+        signEvent:FireServer(unpack(warnArgs))
     else
         local toolArgs = {[1] = 'Sign', [2] = 'sign'}
 
@@ -66,59 +66,59 @@ local warnError = function(warnReason) 
         local tool = client.Backpack:WaitForChild('Sign')
         local humanoid = client.Character.Humanoid
         humanoid:EquipTool(tool)
-    
+
         local warnArgs = {[1] = warnReason}
-        signEvent:FireServer(unpack(warnArgs)) 
+        signEvent:FireServer(unpack(warnArgs))
     end
   
     client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
   
     task.wait(7)
   
-    local humanoid = client.Character.Humanoid 
+    local humanoid = client.Character.Humanoid
     humanoid:UnequipTools()
 end
 
-local hideError = function() 
-    local humanoid = client.Character.Humanoid 
+local hideError = function()
+    local humanoid = client.Character.Humanoid
     humanoid:UnequipTools()
 end
 
-local checkUser = function(username, authList) 
+local checkUser = function(username, authList)
     for id, auth in ipairs(authList) do
-        if string.match(username, auth) then 
+        if string.match(username, auth) then
             return true  
-        end 
+        end
     end
   
-    return false
+    return false
 end
 
-local getWorkingUser = function(username, authList) 
+local getWorkingUser = function(username, authList)
     for id, auth in ipairs(authList) do
-        if string.match(username, auth) then 
+        if string.match(username, auth) then
             return auth
-        end 
+        end
     end
   
-    return auth
+    return auth
 end
   
-addCommand('setStatus', function(args) 
+addCommand('setStatus', function(args)
     if commandCheck(args, 'setStatus') then
-        if args[2] == 'true' then 
+        if args[2] == 'true' then
             activeStatus = true
-        elseif args[2] == 'false' then 
+        elseif args[2] == 'false' then
             activeStatus = false
-        else 
+        else
             warnError('COMMAND ERROR: Invalid Argument Type | "'..args[2]..'" is not a valid argument type.')
-        end 
+        end
     end
 end)
   
-addCommand('bringClient', function(args) 
+addCommand('bringClient', function(args)
     if checkCommand(args, 'bringClient') then
-        client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame 
+        client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
     end
 end)
   
@@ -126,22 +126,22 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
     local authString = chatMessage.Name
     local commandString = chatMessage:WaitForChild('TextLabel'):WaitForChild('TextMessage').ContentText
     
-    if string.match(commandString, ';') and activeStatus then
+   if string.match(commandString, ';') and activeStatus then
         hideError()
         currentExecutor = getWorkingUser(authString, authorized)
-        if checkUser(authString, authorized) then 
+        if checkUser(authString, authorized) then
             local args = getArgs(commandString)
             local command = args[1]
         
             local s, e = pcall(function()
-                commandArray[command](args) 
+                commandArray[command](args)
             end)
         
             if e then
                 print(e)
                 warnError('COMMAND ERROR: Invalid Command')
             end
-        end 
+        end
     end
 end)
 
