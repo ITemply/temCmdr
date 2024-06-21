@@ -117,9 +117,51 @@ addCommand('setStatus', function(args)
 end)
   
 addCommand('bringClient', function(args)
-    print(args)
     if commandCheck(args, 'bringClient') then
         client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+    end
+end)
+
+addCommand('signSay', function(agrs)
+    if commandCheck(args, 'signSay') then
+        local signText = ''
+
+        args[1] = ''
+        for id, arg in ipairs(args) do
+            signText = signText + arg + ' '
+        end
+
+        if client.Backpack:FindFirstChild('Sign') then
+            local tool = client.Backpack:WaitForChild('Sign')
+            local humanoid = client.Character.Humanoid
+            humanoid:EquipTool(tool)
+    
+            local warnArgs = {[1] = signText}
+
+            signEvent:FireServer(unpack(warnArgs))
+        elseif client.Character:FindFirstChild('Sign') then
+            local warnArgs = {[1] = signText}
+
+            signEvent:FireServer(unpack(warnArgs))
+        else
+            local toolArgs = {[1] = 'Sign', [2] = 'sign'}
+
+            toolEvent:FireServer(unpack(toolArgs))
+            local tool = client.Backpack:WaitForChild('Sign')
+            local humanoid = client.Character.Humanoid
+            humanoid:EquipTool(tool)
+
+            local warnArgs = {[1] = signText}
+            signEvent:FireServer(unpack(warnArgs))
+        end
+  
+        client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+    end
+end)
+
+addCommand('hideSign', function(args)
+    if commandCheck(args, 'hideSign') then
+        hideError()
     end
 end)
   
