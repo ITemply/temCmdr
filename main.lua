@@ -117,7 +117,7 @@ addCommand('setStatus', function(args)
 end)
   
 addCommand('bringClient', function(args)
-    if checkCommand(args, 'bringClient') then
+    if commandCheck(args, 'bringClient') then
         client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
     end
 end)
