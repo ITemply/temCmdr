@@ -13,7 +13,8 @@ local signEvent = client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild
 local authorized = {'525570442'}
 local commandArray = {}
 
-local activeStatus = truelocal needAuthorization = true
+local activeStatus = true
+local needAuthorization = true
 local currentExecutor = ''
 
 local getArgs = function(commandString) 
