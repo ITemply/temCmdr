@@ -75,7 +75,8 @@ local warnError = function(warnReason) 
   
     task.wait(7)
   
-    local humanoid = client.Character.Humanoid humanoid:UnequipTools()
+    local humanoid = client.Character.Humanoid 
+    humanoid:UnequipTools()
 end
 
 local hideError = function() 
