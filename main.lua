@@ -181,8 +181,8 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
             end)
         
             if e then
-                print(e)
                 warnError('COMMAND ERROR: Invalid Command')
+                print(e)
             end
         end
     end
