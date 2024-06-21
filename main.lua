@@ -117,6 +117,7 @@ addCommand('setStatus', function(args)
 end)
   
 addCommand('bringClient', function(args)
+    print(args)
     if commandCheck(args, 'bringClient') then
         client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
     end
@@ -126,7 +127,7 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
     local authString = chatMessage.Name
     local commandString = chatMessage:WaitForChild('TextLabel'):WaitForChild('TextMessage').ContentText
     
-   if string.match(commandString, ';') and activeStatus then
+    if string.match(commandString, ';') and activeStatus then
         hideError()
         currentExecutor = getWorkingUser(authString, authorized)
         if checkUser(authString, authorized) then
