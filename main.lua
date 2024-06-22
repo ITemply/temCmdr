@@ -136,7 +136,6 @@ addCommand('signSay', function(args)
     if commandCheck(args, 'signSay') then
         local signText = ''
 
-        args[1] = ''
         for id, arg in ipairs(args) do
 	    if arg ~= '' then 
             	signText = signText..arg..' '
@@ -189,8 +188,6 @@ addCommand('message', function(args)
     if commandCheck(args, 'message') then
         local signText = ''
 
-        args[1] = ''
-	args[2] = ''
         for id, arg in ipairs(args) do
             if arg ~= '' then 
             	signText = signText..arg..' '
