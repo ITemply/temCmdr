@@ -23,3 +23,9 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 10. <b>;kill</b> (player) - kills a player until they are dead | <b>pre:</b> k
 11. <b>;killBoss</b> (cen/cra/dra/gri/lav) - kills a boss depending on the specified one inputted | <b>pre:</b> kb
 12. <b>;reset</b> - resets the client | <b>pre:</b> r
+
+<h2>Pre Usage</h2>
+
+Precommand of <b>;message</b>:
+<br>
+;m (user) (message) [m - the pre for message]
