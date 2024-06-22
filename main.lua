@@ -45,6 +45,7 @@ local matchPlayer = function(playerName)
         end
     end
 
+    warnError('COMMAND ERROR: Invalid Player')
     return false
 end
 
@@ -55,6 +56,7 @@ local getExePlayer = function(playerIdString)
         end
     end
 
+    warnError('COMMAND ERROR: Invalid Player')
     return false
 end
   
