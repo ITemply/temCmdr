@@ -11,15 +11,15 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 
 <h2>Commands</h2>
 
-1. <b>;setStatus</b> (true/false) - sets the status of the bot to be active or non-active (can not be undone once false)
-2. <b>;bringClient</b> - brings the client to the command executor
-3. <b>;signSay</b> (message) - brings the client to the command executor holding a sign with a message
-4. <b>;hideSign</b> - hides the sign
-5. <b>;teleportClient</b> (player) - teleports the client to a player
-6. <b>;message</b> (player) (message) - teleports the client to a player while holding the sign out with a message
-7. <b>;leave</b> - leaves the game
-8. <b>;loopTeleport</b> (player) - loop teleports to a x player
-9. <b>;unloopTeleport</b> - stops the looped teleporting
-10. <b>;kill</b> (player) - kills a player until they are dead
-11. <b>;killBoss</b> (cen/cra/dra/gri/lav) - kills a boss depending on the specified one inputted
-12. <b>;reset</b> - resets the client
+1. <b>;setStatus</b> (true/false) - sets the status of the bot to be active or non-active (can not be undone once false) | <b>pre:</b> st
+2. <b>;bringClient</b> - brings the client to the command executor | <b>pre:</b> b
+3. <b>;signSay</b> (message) - brings the client to the command executor holding a sign with a message | <b>pre:</b> ss
+4. <b>;hideSign</b> - hides the sign | <b>pre:</b> hs
+5. <b>;teleportClient</b> (player) - teleports the client to a player | <b>pre:</b> t
+6. <b>;message</b> (player) (message) - teleports the client to a player while holding the sign out with a message | <b>pre:</b> m
+7. <b>;leave</b> - leaves the game | <b>pre:</b> l
+8. <b>;loopTeleport</b> (player) - loop teleports to a x player | <b>pre:</b> lt
+9. <b>;unloopTeleport</b> - stops the looped teleporting | <b>pre:</b> ult
+10. <b>;kill</b> (player) - kills a player until they are dead | <b>pre:</b> k
+11. <b>;killBoss</b> (cen/cra/dra/gri/lav) - kills a boss depending on the specified one inputted | <b>pre:</b> kb
+12. <b>;reset</b> - resets the client | <b>pre:</b> r
