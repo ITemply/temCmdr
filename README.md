@@ -11,7 +11,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 
 <h2>Commands</h2>
 
-1. <b>;setStatus</b> (true/false) - sets the status of the bot to be active or non-active (can not be undone once false) | <b>pre:</b> st
+1. <b>;setStatus</b> (true/false) - sets the status of the bot (can not be undone once false) | <b>pre:</b> st
 2. <b>;bringClient</b> - brings the client to the command executor | <b>pre:</b> b
 3. <b>;signSay</b> (message) - brings the client to the command executor holding a sign with a message | <b>pre:</b> ss
 4. <b>;hideSign</b> - hides the sign | <b>pre:</b> hs
