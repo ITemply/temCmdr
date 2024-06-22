@@ -2,6 +2,8 @@
 
 Tem Cmdr is a command execution script for Roblox because I got bored with javascript.
 
+Stopping work on this cuz I don't feel like exploiting anymore atm.
+
 Command prefix: ";"
 
 ```lua
