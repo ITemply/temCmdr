@@ -269,7 +269,17 @@ addCommand('kill', function(args)
 	    task.wait()
 	until player.Character.Humanoid.Health <= 0
 
+	client.Character.HumanoidRootPart.Anchored = true
+
 	client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+
+	client.Character.HumanoidRootPart.Anchored = false
+    end
+end)
+
+addCommand('reset', function(args)
+    if commandCheck(args, 'reset') then
+	client.Character.Humanoid.Health = 0
     end
 end)
   
