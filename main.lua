@@ -15,6 +15,8 @@ local commandArray = {}
 
 local activeStatus = true
 local needAuthorization = true
+local canTeleport = false
+
 local currentExecutor = ''
 
 local getArgs = function(commandString)
@@ -229,6 +231,25 @@ end)
 addCommand('leave', function(args)
     if commandCheck(args, 'leave') then
         client:Kick('COMMAND EXECUTED: ;leave')
+    end
+end)
+
+addCommand('loopTeleport', function(args)
+    if commandCheck(args, 'loopTeleport') then
+        local player, playerName = matchPlayer(args[2])
+	canTeleport = false
+	canTeleport = true
+
+	while canTeleport do
+	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+	    task.wait()
+	end
+    end
+end)
+
+addCommand('unloopTeleport', function(args)
+    if commandCheck(args, 'unloopTeleport') then
+	canTeleport = false
     end
 end)
   
