@@ -175,7 +175,7 @@ addCommand('hideSign', function(args)
     end
 end)
 
-addCommand('teleportClient' function(args)
+addCommand('teleportClient', function(args)
     if commandCheck(args, 'teleportClient') then
         local player, playerName = matchPlayer(args[2])
             
