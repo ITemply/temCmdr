@@ -289,9 +289,9 @@ addCommand('killBoss', function(args)
     if commandCheck(args, 'killBoss') then
 	local hitBoss = workspace
 			
-	if args[2] = 'cen' then
+	if args[2] == 'cen' then
 	    hitBoss = NPC:WaitForChild('CENTAUR'):WaitForChild('Humanoid')
-	elseif args[2] = 'cra' then
+	elseif args[2] == 'cra' then
 	    hitBoss = NPC:WaitForChild('CRABBOSS'):WaitForChild('Humanoid')
 	elseif args[2] == 'dra' then
 	    hitBoss = NPC:WaitForChild('DragonGriaffe'):WaitForChild('Humanoid')
