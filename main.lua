@@ -124,7 +124,7 @@ addCommand('setStatus', function(args)
         elseif args[2] == 'false' then
             activeStatus = false
         else
-            warnError('COMMAND ERROR: Invalid Argument Type | ''..args[2]..'' is not a valid argument type.')
+            warnError('COMMAND ERROR: Invalid Argument Type | "'..args[2]..'" is not a valid argument type.')
         end
     end
 end)
