@@ -226,6 +226,12 @@ addCommand('message', function(args)
         client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
     end
 end)
+
+addCommand('leave', function(args)
+    if commandCheck(args, 'leave') then
+        client:Kick('COMMAND EXECUTED: ;leave')
+    end
+end)
   
 mainMessages.ChildAdded:Connect(function(chatMessage)
     local authString = chatMessage.Name
