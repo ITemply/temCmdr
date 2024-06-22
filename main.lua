@@ -122,7 +122,7 @@ addCommand('bringClient', function(args)
     end
 end)
 
-addCommand('signSay', function(agrs)
+addCommand('signSay', function(args)
     if commandCheck(args, 'signSay') then
         local signText = ''
 
