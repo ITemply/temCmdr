@@ -1,4 +1,4 @@
-ealocal mainChat = game:GetService('CoreGui'):WaitForChild('ExperienceChat')
+local mainChat = game:GetService('CoreGui'):WaitForChild('ExperienceChat')
 local RCTChat = mainChat:WaitForChild('appLayout').chatWindow.scrollingView.bottomLockedScrollView.RCTScrollView
 local mainMessages = RCTChat:WaitForChild('RCTScrollContentView')
 
