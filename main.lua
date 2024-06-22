@@ -128,7 +128,7 @@ addCommand('signSay', function(args)
 
         args[1] = ''
         for id, arg in ipairs(args) do
-            signText = signText + arg + ' '
+            signText = signText..arg..' '
         end
 
         if client.Backpack:FindFirstChild('Sign') then
