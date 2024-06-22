@@ -9,6 +9,7 @@ local client = players.LocalPlayer
 
 local toolEvent = replicatedStorage:WaitForChild('Events'):WaitForChild('ToolEvent')
 local signEvent = client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event')
+local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIIIlIlIli')
 
 local authorized = {'525570442'}
 local commandArray = {}
@@ -123,7 +124,7 @@ addCommand('setStatus', function(args)
         elseif args[2] == 'false' then
             activeStatus = false
         else
-            warnError('COMMAND ERROR: Invalid Argument Type | "'..args[2]..'" is not a valid argument type.')
+            warnError('COMMAND ERROR: Invalid Argument Type | ''..args[2]..'' is not a valid argument type.')
         end
     end
 end)
@@ -250,6 +251,23 @@ end)
 addCommand('unloopTeleport', function(args)
     if commandCheck(args, 'unloopTeleport') then
 	canTeleport = false
+    end
+end)
+
+addCommand('kill', function(args)
+    if commandCheck(args, 'kill') then
+	local player, playerName = matchPlayer(args[2])
+
+	local damageArgs = {
+    	    [1] = player.Character.Humanoid,
+    	    [2] = 1
+	}
+
+	repeat
+	    damageEvent:FireServer(unpack(damageArgs))
+	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 7, 0)
+	    task.wait()
+	until player.Character.Humanoid.Health <= 0 
     end
 end)
   
