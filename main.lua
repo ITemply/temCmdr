@@ -138,7 +138,9 @@ addCommand('signSay', function(args)
 
         args[1] = ''
         for id, arg in ipairs(args) do
-            signText = signText..arg..' '
+	    if arg ~= '' then 
+            	signText = signText..arg..' '
+	    end
         end
 
         if client.Backpack:FindFirstChild('Sign') then
@@ -188,8 +190,11 @@ addCommand('message', function(args)
         local signText = ''
 
         args[1] = ''
+	args[2] = ''
         for id, arg in ipairs(args) do
-            signText = signText..arg..' '
+            if arg ~= '' then 
+            	signText = signText..arg..' '
+	    end
         end
 
         if client.Backpack:FindFirstChild('Sign') then
@@ -244,5 +249,7 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
         end
     end
 end)
+
+client.HumanoidRootPart.Anchored = true
 
 print('LOADED TEM CMDR\n\nTem Cmdr has been loaded and is now ready for use via clients.\nIf you wish to change the authorized users, please use the update command while the script is running or rerun the script with a new userid.')
