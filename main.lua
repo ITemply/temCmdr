@@ -35,19 +35,20 @@ local commandCheck = function(args, command)
     if args[1] == command then
         return true
     end
-  
-    return false
+	
+    warnError('COMMAND ERROR: Command Type Not Same')
+    return
 end
 
 local matchPlayer = function(playerName)
     for id, player in ipairs(players:GetPlayers()) do
-	    if string.lower(player.Name):match(string.lower(playerName)) then
+	if string.lower(player.Name):match(string.lower(playerName)) then
             return player, player.Name
         end
     end
 
     warnError('COMMAND ERROR: Invalid Player')
-    return false
+    return
 end
 
 local getExePlayer = function(playerIdString)
@@ -58,7 +59,7 @@ local getExePlayer = function(playerIdString)
     end
 
     warnError('COMMAND ERROR: Invalid Player')
-    return false
+    return
 end
   
 local warnError = function(warnReason)
@@ -117,6 +118,42 @@ local getWorkingUser = function(username, authList)
     end
   
     return auth
+end
+
+local getShortenCommand = function(args)
+    local command = args[1]
+	
+    if agrs[1] == 'st' then
+	command = 'setStatus'
+    elseif agrs[1] == 'b' then
+	command = 'bringClient'
+    elseif agrs[1] == 'ss' then
+	command = 'signSay'
+    elseif agrs[1] == 'hs' then
+	command = 'hideSign'
+    elseif agrs[1] == 't' then
+	command = 'teleportClient'
+    elseif agrs[1] == 'm' then
+	command = 'message'
+    elseif agrs[1] == 'l' then
+	command = 'leave'
+    elseif agrs[1] == 'lt' then
+	command = 'loopTeleport'
+    elseif agrs[1] == 'ylt' then
+	command = 'unloopTeleport'
+    elseif agrs[1] == 'kill' then
+	command = 'k'
+    elseif agrs[1] == 'kb' then
+	command = 'killBoss'
+    elseif agrs[1] == 'r' then
+	command = 'reset'
+    end
+
+    return command
+end
+
+local isValidCommand = function(dict, command)
+    return dict[command] ~= nil
 end
   
 addCommand('setStatus', function(args)
@@ -330,15 +367,19 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
         currentExecutor = getWorkingUser(authString, authorized)
         if checkUser(authString, authorized) then
             local args = getArgs(commandString)
-            local command = args[1]
+	    local command = getShortenCommand(args)
         
             local s, e = pcall(function()
-                commandArray[command](args)
+		if isValidCommand(command) then
+                    commandArray[command](args)
+		else
+		    warnError('COMMAND ERROR: Invalid Command | "'..command..'" is not a vaild command.')
+		end
             end)
         
             if e then
-                warnError('COMMAND ERROR: Invalid Command')
-                print(e)
+		print(e)
+                warnError('COMMAND ERROR: Command Failed | Check console for more details on command error.')
             end
         end
     end
