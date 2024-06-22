@@ -294,7 +294,7 @@ addCommand('killBoss', function(args)
 	elseif args[2] == 'cra' then
 	    hitBoss = NPCS:WaitForChild('CRABBOSS'):WaitForChild('Humanoid')
 	elseif args[2] == 'dra' then
-	    hitBoss = NPCS:WaitForChild('DragonGriaffe'):WaitForChild('Humanoid')
+	    hitBoss = NPCS:WaitForChild('DragonGiraffe'):WaitForChild('Humanoid')
 	elseif args[2] == 'gri' then
 	    hitBoss = NPCS:WaitForChild('Griffin'):WaitForChild('Humanoid')	
 	elseif args[2] == 'lav' then
