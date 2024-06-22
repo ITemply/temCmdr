@@ -8,7 +8,6 @@ local replicatedStorage = game:GetService('ReplicatedStorage')
 local client = players.LocalPlayer
 
 local toolEvent = replicatedStorage:WaitForChild('Events'):WaitForChild('ToolEvent')
-local signEvent = client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event')
 local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIIIlIlIli')
 
 local authorized = {'525570442'}
@@ -67,11 +66,11 @@ local warnError = function(warnReason)
     
         local warnArgs = {[1] = warnReason}
 
-        signEvent:FireServer(unpack(warnArgs))
+        client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
     elseif client.Character:FindFirstChild('Sign') then
         local warnArgs = {[1] = warnReason}
 
-        signEvent:FireServer(unpack(warnArgs))
+        client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
     else
         local toolArgs = {[1] = 'Sign', [2] = 'sign'}
 
@@ -81,7 +80,7 @@ local warnError = function(warnReason)
         humanoid:EquipTool(tool)
 
         local warnArgs = {[1] = warnReason}
-        signEvent:FireServer(unpack(warnArgs))
+        client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
     end
   
     client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
@@ -153,11 +152,11 @@ addCommand('signSay', function(args)
     
             local warnArgs = {[1] = signText}
 
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         elseif client.Character:FindFirstChild('Sign') then
             local warnArgs = {[1] = signText}
 
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         else
             local toolArgs = {[1] = 'Sign', [2] = 'sign'}
 
@@ -167,7 +166,7 @@ addCommand('signSay', function(args)
             humanoid:EquipTool(tool)
 
             local warnArgs = {[1] = signText}
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         end
   
         client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
@@ -208,11 +207,11 @@ addCommand('message', function(args)
     
             local warnArgs = {[1] = signText}
 
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         elseif client.Character:FindFirstChild('Sign') then
             local warnArgs = {[1] = signText}
 
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         else
             local toolArgs = {[1] = 'Sign', [2] = 'sign'}
 
@@ -222,7 +221,7 @@ addCommand('message', function(args)
             humanoid:EquipTool(tool)
 
             local warnArgs = {[1] = signText}
-            signEvent:FireServer(unpack(warnArgs))
+            client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
         end
             
         client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
