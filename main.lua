@@ -1,4 +1,4 @@
-local mainChat = game:GetService('CoreGui'):WaitForChild('ExperienceChat')
+ealocal mainChat = game:GetService('CoreGui'):WaitForChild('ExperienceChat')
 local RCTChat = mainChat:WaitForChild('appLayout').chatWindow.scrollingView.bottomLockedScrollView.RCTScrollView
 local mainMessages = RCTChat:WaitForChild('RCTScrollContentView')
 
@@ -269,7 +269,7 @@ addCommand('kill', function(args)
 	    damageEvent:FireServer(unpack(damageArgs))
 	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 10, 10)
 	    task.wait()
-	until player.Character.Humanoid.Health <= 0 or client.Character.Humanoid.Helath <= 0 
+	until player.Character.Humanoid.Health <= 0 or client.Character.Humanoid.Health <= 0 
 
 	client.Character.HumanoidRootPart.Anchored = true
 
@@ -311,7 +311,7 @@ addCommand('killBoss', function(args)
 	repeat
 	    damageEvent:FireServer(unpack(damageArgs))
 	    task.wait()
-	until hitBoss.Health <= 0 or client.Character.Humanoid.Helath <= 0 
+	until hitBoss.Health <= 0 or client.Character.Humanoid.Health <= 0 
 
 	client.Character.HumanoidRootPart.Anchored = true
 
