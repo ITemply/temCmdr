@@ -290,15 +290,15 @@ addCommand('killBoss', function(args)
 	local hitBoss = workspace
 			
 	if args[2] == 'cen' then
-	    hitBoss = NPC:WaitForChild('CENTAUR'):WaitForChild('Humanoid')
+	    hitBoss = NPCS:WaitForChild('CENTAUR'):WaitForChild('Humanoid')
 	elseif args[2] == 'cra' then
-	    hitBoss = NPC:WaitForChild('CRABBOSS'):WaitForChild('Humanoid')
+	    hitBoss = NPCS:WaitForChild('CRABBOSS'):WaitForChild('Humanoid')
 	elseif args[2] == 'dra' then
-	    hitBoss = NPC:WaitForChild('DragonGriaffe'):WaitForChild('Humanoid')
+	    hitBoss = NPCS:WaitForChild('DragonGriaffe'):WaitForChild('Humanoid')
 	elseif args[2] == 'gri' then
-	    hitBoss = NPC:WaitForChild('Griffin'):WaitForChild('Humanoid')	
+	    hitBoss = NPCS:WaitForChild('Griffin'):WaitForChild('Humanoid')	
 	elseif args[2] == 'lav' then
-	    hitBoss = NPC:WaitForChild('LavaGorilla'):WaitForChild('Humanoid')
+	    hitBoss = NPCS:WaitForChild('LavaGorilla'):WaitForChild('Humanoid')
 	end
 
 	local damageArgs = {
