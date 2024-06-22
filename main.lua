@@ -6,6 +6,7 @@ local players = game:GetService('Players')
 local replicatedStorage = game:GetService('ReplicatedStorage')
 
 local client = players.LocalPlayer
+local NPCS = workspace:WaitForChild('NPC')
 
 local toolEvent = replicatedStorage:WaitForChild('Events'):WaitForChild('ToolEvent')
 local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIIIlIlIli')
@@ -268,7 +269,7 @@ addCommand('kill', function(args)
 	    damageEvent:FireServer(unpack(damageArgs))
 	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 10, 10)
 	    task.wait()
-	until player.Character.Humanoid.Health <= 0
+	until player.Character.Humanoid.Health <= 0 or client.Character.Humanoid.Helath <= 0 
 
 	client.Character.HumanoidRootPart.Anchored = true
 
@@ -281,6 +282,42 @@ end)
 addCommand('reset', function(args)
     if commandCheck(args, 'reset') then
 	client.Character.Humanoid.Health = 0
+    end
+end)
+
+addCommand('killBoss', function(args)
+    if commandCheck(args, 'killBoss') then
+	local hitBoss = workspace
+			
+	if args[2] = 'cen' then
+	    hitBoss = NPC:WaitForChild('CENTAUR'):WaitForChild('Humanoid')
+	elseif args[2] = 'car' then
+	    hitBoss = NPC:WaitForChild('CRABBOSS'):WaitForChild('Humanoid')
+	elseif args[2] == 'dra' then
+	    hitBoss = NPC:WaitForChild('DragonGriaffe'):WaitForChild('Humanoid')
+	elseif args[2] == 'gri' then
+	    hitBoss = NPC:WaitForChild('Griffin'):WaitForChild('Humanoid')	
+	elseif args[2] == 'lav' then
+	    hitBoss = NPC:WaitForChild('LavaGorilla'):WaitForChild('Humanoid')
+	end
+
+	local damageArgs = {
+    	    [1] = hitBoss,
+    	    [2] = 1
+	}
+
+	client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+
+	repeat
+	    damageEvent:FireServer(unpack(damageArgs))
+	    task.wait()
+	until hitBoss.Health <= 0 or client.Character.Humanoid.Helath <= 0 
+
+	client.Character.HumanoidRootPart.Anchored = true
+
+	client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+
+	client.Character.HumanoidRootPart.Anchored = false
     end
 end)
   
