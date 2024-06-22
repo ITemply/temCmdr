@@ -136,6 +136,7 @@ addCommand('signSay', function(args)
     if commandCheck(args, 'signSay') then
         local signText = ''
 
+	args[1] = ''
         for id, arg in ipairs(args) do
 	    if arg ~= '' then 
             	signText = signText..arg..' '
@@ -187,7 +188,10 @@ end)
 addCommand('message', function(args)
     if commandCheck(args, 'message') then
         local signText = ''
-
+	local player, playerName = matchPlayer(args[2])
+			
+	args[1] = ''
+	args[2] = ''
         for id, arg in ipairs(args) do
             if arg ~= '' then 
             	signText = signText..arg..' '
@@ -217,8 +221,6 @@ addCommand('message', function(args)
             local warnArgs = {[1] = signText}
             signEvent:FireServer(unpack(warnArgs))
         end
-
-        local player, playerName = matchPlayer(args[2])
             
         client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
     end
