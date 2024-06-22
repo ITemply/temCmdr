@@ -36,6 +36,16 @@ local commandCheck = function(args, command)
     return false
 end
 
+local matchPlayer = function(playerName)
+    for id, player in ipairs(players:GetPlayers()) do
+	    if string.lower(player.Name):match(string.lower(playerName)) then
+            return player, player.Name
+        end
+    end
+
+    return false
+end
+
 local getExePlayer = function(playerIdString)
     for id, player in ipairs(players:GetPlayers()) do
         if player.UserId == tonumber(playerIdString) then
@@ -162,6 +172,53 @@ end)
 addCommand('hideSign', function(args)
     if commandCheck(args, 'hideSign') then
         hideError()
+    end
+end)
+
+addCommand('teleportClient' function(args)
+    if commandCheck(args, 'teleportClient') then
+        local player, playerName = matchPlayer(args[2])
+            
+        client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+    end
+end)
+
+addCommand('message', function(args)
+    if commandCheck(args, 'message') then
+        local signText = ''
+
+        args[1] = ''
+        for id, arg in ipairs(args) do
+            signText = signText..arg..' '
+        end
+
+        if client.Backpack:FindFirstChild('Sign') then
+            local tool = client.Backpack:WaitForChild('Sign')
+            local humanoid = client.Character.Humanoid
+            humanoid:EquipTool(tool)
+    
+            local warnArgs = {[1] = signText}
+
+            signEvent:FireServer(unpack(warnArgs))
+        elseif client.Character:FindFirstChild('Sign') then
+            local warnArgs = {[1] = signText}
+
+            signEvent:FireServer(unpack(warnArgs))
+        else
+            local toolArgs = {[1] = 'Sign', [2] = 'sign'}
+
+            toolEvent:FireServer(unpack(toolArgs))
+            local tool = client.Backpack:WaitForChild('Sign')
+            local humanoid = client.Character.Humanoid
+            humanoid:EquipTool(tool)
+
+            local warnArgs = {[1] = signText}
+            signEvent:FireServer(unpack(warnArgs))
+        end
+
+        local player, playerName = matchPlayer(args[2])
+            
+        client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
     end
 end)
   
