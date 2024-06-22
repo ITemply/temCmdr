@@ -21,3 +21,4 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 8. <b>;loopTeleport</b> (player) - loop teleports to a x player
 9. <b>;unloopTeleport</b> - stops the looped teleporting
 10. <b>;kill</b> (player) - kills a player until they are dead
+11. <b>;reset</b> - resets the client
