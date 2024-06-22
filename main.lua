@@ -266,7 +266,7 @@ addCommand('kill', function(args)
 
 	repeat
 	    damageEvent:FireServer(unpack(damageArgs))
-	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 10, 0)
+	    client.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(5, 10, 0)
 	    task.wait()
 	until player.Character.Humanoid.Health <= 0
 
