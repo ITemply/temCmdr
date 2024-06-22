@@ -4,6 +4,10 @@ Tem Cmdr is a command execution script for Roblox because I got bored with javas
 
 Stopping work on this cuz I don't feel like exploiting anymore atm.
 
+<h2>How 2 Use</h2>
+
+Take all the code from here main.lua and put it into an executor. Then take the authoriztion and change it to be the user id of the person using the commands. Keep in mind you need two accounts for this script to work. This script works by one account being controlled by the messages sent via the otehr user. Other account must be a high level for this to work correctly. 
+
 Command prefix: ";"
 
 ```lua
