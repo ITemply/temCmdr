@@ -20,3 +20,4 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 7. <b>;leave</b> - leaves the game
 8. <b>;loopTeleport</b> (player) - loop teleports to a x player
 9. <b>;unloopTeleport</b> - stops the looped teleporting
+10. <b>;kill</b> (player) - kills a player until they are dead
