@@ -102,7 +102,7 @@ local getShortenCommand = function(args)
 	command = 'leave'
     elseif args[1] == 'lt' then
 	command = 'loopTeleport'
-    elseif args[1] == 'ylt' then
+    elseif args[1] == 'ult' then
 	command = 'unloopTeleport'
     elseif args[1] == 'k' then
 	command = 'kill'
