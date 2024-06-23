@@ -378,8 +378,6 @@ addCommand('authUser', function(args)
 		local userId = player.UserId
 
 		table.insert(authorized, tostring(userId))
-
-		print(unpack(authorized))
 	end
 end)
 
