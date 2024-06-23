@@ -176,7 +176,7 @@ local loadOutsideArgs = function(outsideArgs)
 	needAuthorization = outsideArgs[1]['authReq']
 end
 
-loadOutsideArgs(outsideData)
+--loadOutsideArgs(outsideData)
 
 addCommand('setStatus', function(args)
 	if commandCheck(args, 'setStatus') then
