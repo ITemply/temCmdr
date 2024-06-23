@@ -112,6 +112,8 @@ local getShortenCommand = function(args)
 	command = 'killBoss'
     elseif args[1] == 'r' then
 	command = 'reset'
+    elseif args[1] == 'a' then
+	command =  'authUser'
     end
 
     return command
@@ -360,6 +362,17 @@ addCommand('killBoss', function(args)
 	client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
 
 	client.Character.HumanoidRootPart.Anchored = false
+    end
+end)
+
+addCommand('authUser' function(args)
+    if commandCheck(args, 'authUser') then
+	local player, playerName = matchPlayer(args[2])
+	local userid = player.UserId
+
+	table.insert(authorized, tostring(userId))
+
+	print(unpack(authorized))
     end
 end)
   
