@@ -375,6 +375,8 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
 	    print(args)
 				
 	    local command = getShortenCommand(args)
+
+	    print(command)
         
             local s, e = pcall(function()
 		if isValidCommand(commandArray, command) then
