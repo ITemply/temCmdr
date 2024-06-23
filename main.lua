@@ -13,6 +13,8 @@ local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIII
 
 local outsideData = {...}
 
+print(unpack(outsideData))
+
 local authorized = {}
 local commandArray = {}
 
@@ -162,6 +164,14 @@ end
 local isValidCommand = function(dict, command)
 	return dict[command] ~= nil
 end
+
+local loadOutsideArgs = function(outsideArgs)
+	print('suc')
+	local authedUsers = outsideArgs[1]['authedUsers']
+	authorized = authedUsers
+end
+
+loadOutsideArgs(outsideData)
 
 addCommand('setStatus', function(args)
 	if commandCheck(args, 'setStatus') then
@@ -402,12 +412,5 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
 		end
 	end
 end)
-
---local loadOutsideArgs = function(outsideArgs)
-	--local authedUsers = outsideArgs[1]['authedUsers']
-	--authorized = authedUsers
---end
-
---loadOutsideArgs(outsideData)
 
 print('LOADED TEM CMDR\n\nTem Cmdr has been loaded and is now ready for use via clients.\nIf you wish to change the authorized users, please use the update command while the script is running or rerun the script with a new userid.')
