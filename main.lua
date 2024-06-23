@@ -27,7 +27,7 @@ local getArgs = function(commandString)
   
     	return args
     else
-	return usernameSep
+	return {usernameSep}
     end
 end
 
