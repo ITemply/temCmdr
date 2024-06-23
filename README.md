@@ -6,7 +6,7 @@ Stopping work on this cuz I don't feel like exploiting anymore atm.
 
 <h2>How 2 Use</h2>
 
-Take all the code from here main.lua and put it into an executor. Then take the authoriztion and change it to be the user id of the person using the commands. Keep in mind you need two accounts for this script to work. This script works by one account being controlled by the messages sent via the otehr user. Other account must be a high level for this to work correctly. 
+Take the code stated below and paste it into your executor. Then put in your main accounts userId. Remember, this bot requires 2 or more accounts to function with one being a high level. Once you have your userId of the account you wish to execute commands on, run the code on your "bot" account and let it function. This code should allow the user added to the authorization to control the "bot" account via chat commands.
 
 ```lua
 local loadData = {
