@@ -94,8 +94,8 @@ local getShortenCommand = function(args)
 	command = 'loopTeleport'
     elseif args[1] == 'ylt' then
 	command = 'unloopTeleport'
-    elseif args[1] == 'kill' then
-	command = 'k'
+    elseif args[1] == 'k' then
+	command = 'kill'
     elseif args[1] == 'kb' then
 	command = 'killBoss'
     elseif args[1] == 'r' then
