@@ -11,7 +11,7 @@ local NPCS = workspace:WaitForChild('NPC')
 local toolEvent = replicatedStorage:WaitForChild('Events'):WaitForChild('ToolEvent')
 local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIIIlIlIli')
 
-local outsideData = {...}
+--local outsideData = {...}
 
 local authorized = {}
 local commandArray = {}
