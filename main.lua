@@ -370,13 +370,8 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
         hideError()
         currentExecutor = getWorkingUser(authString, authorized)
         if checkUser(authString, authorized) then
-            local args = getArgs(commandString)
-
-	    print(args)
-				
+            local args = getArgs(commandString)		
 	    local command = getShortenCommand(args)
-
-	    print(command)
         
             local s, e = pcall(function()
 		if isValidCommand(commandArray, command) then
