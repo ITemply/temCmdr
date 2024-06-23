@@ -30,41 +30,6 @@ local getArgs = function(commandString)
 	return {usernameSep}
     end
 end
-
-local addCommand = function(commandName, commandFunction)
-    commandArray[commandName] = commandFunction
-end
-
-local commandCheck = function(args, command)
-    if args[1] == command then
-        return true
-    end
-	
-    warnError('COMMAND ERROR: Command Type Not Same')
-    return
-end
-
-local matchPlayer = function(playerName)
-    for id, player in ipairs(players:GetPlayers()) do
-	if string.lower(player.Name):match(string.lower(playerName)) then
-            return player, player.Name
-        end
-    end
-
-    warnError('COMMAND ERROR: Invalid Player')
-    return
-end
-
-local getExePlayer = function(playerIdString)
-    for id, player in ipairs(players:GetPlayers()) do
-        if player.UserId == tonumber(playerIdString) then
-            return player
-        end
-    end
-
-    warnError('COMMAND ERROR: Invalid Player')
-    return
-end
   
 local warnError = function(warnReason)
     if client.Backpack:FindFirstChild('Sign') then
@@ -104,24 +69,8 @@ local hideError = function()
     humanoid:UnequipTools()
 end
 
-local checkUser = function(username, authList)
-    for id, auth in ipairs(authList) do
-        if string.match(username, auth) then
-            return true  
-        end
-    end
-  
-    return false
-end
-
-local getWorkingUser = function(username, authList)
-    for id, auth in ipairs(authList) do
-        if string.match(username, auth) then
-            return auth
-        end
-    end
-  
-    return auth
+local addCommand = function(commandName, commandFunction)
+    commandArray[commandName] = commandFunction
 end
 
 local getShortenCommand = function(args)
@@ -154,6 +103,57 @@ local getShortenCommand = function(args)
     end
 
     return command
+end
+
+local commandCheck = function(args, command)
+    if getShortenCommand(args) == command then
+        return true
+    end
+	
+    warnError('COMMAND ERROR: Command Type Not Same')
+    return
+end
+
+local matchPlayer = function(playerName)
+    for id, player in ipairs(players:GetPlayers()) do
+	if string.lower(player.Name):match(string.lower(playerName)) then
+            return player, player.Name
+        end
+    end
+
+    warnError('COMMAND ERROR: Invalid Player')
+    return
+end
+
+local getExePlayer = function(playerIdString)
+    for id, player in ipairs(players:GetPlayers()) do
+        if player.UserId == tonumber(playerIdString) then
+            return player
+        end
+    end
+
+    warnError('COMMAND ERROR: Invalid Player')
+    return
+end
+
+local checkUser = function(username, authList)
+    for id, auth in ipairs(authList) do
+        if string.match(username, auth) then
+            return true  
+        end
+    end
+  
+    return false
+end
+
+local getWorkingUser = function(username, authList)
+    for id, auth in ipairs(authList) do
+        if string.match(username, auth) then
+            return auth
+        end
+    end
+  
+    return auth
 end
 
 local isValidCommand = function(dict, command)
