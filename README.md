@@ -12,7 +12,11 @@ Command prefix: ";"
 
 ```lua
 -- to load the thingy lol
-loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/main.lua'))()
+local loadData = {
+    ['authedUsers'] = {'525570442', '123'} -- put your user id here
+}
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/main.lua'))(loadData)
 ```
 
 <h2>Commands</h2>
