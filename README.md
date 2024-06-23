@@ -10,8 +10,8 @@ Take the code stated below and paste it into your executor. Then put in your mai
 
 ```lua
 local loadData = {
-    ['authedUsers'] = {'525570442', '123'} -- put your user id here
-    ['prefix'] = ';' -- sets the prefix of the command module
+    ['authedUsers'] = {'525570442', '123'}, -- put your user id here
+    ['prefix'] = ';', -- sets the prefix of the command module
     ['authReq'] = true -- if disabled anyone can use commands
 }
 
