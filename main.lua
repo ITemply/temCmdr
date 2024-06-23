@@ -13,8 +13,6 @@ local damageEvent = replicatedStorage:WaitForChild('jdskhfsIIIllliiIIIdchgdIiIII
 
 local outsideData = {...}
 
-print(unpack(outsideData))
-
 local authorized = {}
 local commandArray = {}
 
@@ -166,7 +164,6 @@ local isValidCommand = function(dict, command)
 end
 
 local loadOutsideArgs = function(outsideArgs)
-	print('suc')
 	local authedUsers = outsideArgs[1]['authedUsers']
 	authorized = authedUsers
 end
