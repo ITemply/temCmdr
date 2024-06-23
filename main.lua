@@ -21,9 +21,10 @@ local needAuthorization = true
 local canTeleport = false
 
 local currentExecutor = ''
+local prefix = ';'
 
 local getArgs = function(commandString)
-	local usernameSep = commandString:split(';')[2]
+	local usernameSep = commandString:split(prefix)[2]
 	if string.match(usernameSep, ' ') then
 		local args = usernameSep:split(' ')
 
@@ -114,6 +115,8 @@ local getShortenCommand = function(args)
 		command = 'reset'
 	elseif args[1] == 'a' then
 		command =  'authUser'
+	elseif args[1] == 'da' then
+		command =  'deAuthUser'
 	end
 
 	return command
@@ -164,8 +167,9 @@ local isValidCommand = function(dict, command)
 end
 
 local loadOutsideArgs = function(outsideArgs)
-	local authedUsers = outsideArgs[1]['authedUsers']
-	authorized = authedUsers
+	authorized = outsideArgs[1]['authedUsers']
+	prefix = outsideArgs[1]['prefix']
+	needAuthorization = outsideArgs[1]['authReq']
 end
 
 loadOutsideArgs(outsideData)
@@ -381,14 +385,61 @@ addCommand('authUser', function(args)
 	end
 end)
 
+addCommand('deAuthUser', function(args)
+	if commandCheck(args, 'deAuthUser') then
+		local player, playerName = matchPlayer(args[2])
+		local userId = tostring(player.UserId)
+			
+		for id, auth in ipairs(authorized) do
+			if auth == userId then
+				authorized[id] = nil
+			end
+		end
+	end
+end)
+
+addCommand('authReq', function(args)
+	if commandCheck(args, 'authReq') then
+		if args[2] == 'true' then
+			needAuthorization = true
+		elseif args[2] == 'false' then
+			needAuthorization = false
+		else
+			warnError('COMMAND ERROR: Invalid Argument Type | "'..args[2]..'" is not a valid argument type.')
+		end
+	end
+end)
+
+addCommand('prefix', function(args)
+	if commandCheck(args, 'prefix') then
+		prefix = args[2]
+	end
+end)
+
 mainMessages.ChildAdded:Connect(function(chatMessage)
 	local authString = chatMessage.Name
 	local commandString = chatMessage:WaitForChild('TextLabel'):WaitForChild('TextMessage').ContentText
 
-	if string.match(commandString, ';') and activeStatus then
+	if string.match(commandString, prefix) and activeStatus then
 		hideError()
 		currentExecutor = getWorkingUser(authString, authorized)
-		if checkUser(authString, authorized) then
+		if checkUser(authString, authorized) and needAuthorization then
+			local args = getArgs(commandString)		
+			local command = getShortenCommand(args)
+
+			local s, e = pcall(function()
+				if isValidCommand(commandArray, command) then
+					commandArray[command](args)
+				else
+					warnError('COMMAND ERROR: Invalid Command | "'..command..'" is not a vaild command.')
+				end
+			end)
+
+			if e then
+				print(e)
+				warnError('COMMAND ERROR: Command Failed | Check console for more details on command error.')
+			end
+		elseif needAuthorization == false then
 			local args = getArgs(commandString)		
 			local command = getShortenCommand(args)
 
