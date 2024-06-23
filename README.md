@@ -33,10 +33,10 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/
 10. <b>;kill</b> (player) - kills a player until they are dead | <b>pre:</b> k
 11. <b>;killBoss</b> (cen/cra/dra/gri/lav) - kills a boss depending on the specified one inputted | <b>pre:</b> kb
 12. <b>;reset</b> - resets the client | <b>pre:</b> r
-13. <b>;authUser</b> (user) - | <b>pre:</b> a
-14. <b>;deAuthUser</b> (user )- | <b>pre:</b> da
-15. <b>;authReq</b> (true/false) - | <b>pre:</b> ar
-16. <b>;prefix</b> - | <b>pre:</b> p
+13. <b>;authUser</b> (user) - allows a user to use commands | <b>pre:</b> a
+14. <b>;deAuthUser</b> (user ) - deallows a user to use commands | <b>pre:</b> da
+15. <b>;authReq</b> (true/false) - allows the entire server to use commands based on the setting| <b>pre:</b> ar
+16. <b>;prefix</b> - sets the prefix of the bot | <b>pre:</b> p
 
 <h2>Pre Usage</h2>
 
