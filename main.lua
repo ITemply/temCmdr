@@ -22,9 +22,13 @@ local currentExecutor = ''
 
 local getArgs = function(commandString)
     local usernameSep = commandString:split(';')[2]
-    local args = usernameSep:split(' ')
+    if string.match(usernameSep, ' ') then
+	local args = usernameSep:split(' ')
   
-    return args
+    	return args
+    else
+	return usernameSep
+    end
 end
 
 local addCommand = function(commandName, commandFunction)
