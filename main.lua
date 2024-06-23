@@ -123,29 +123,29 @@ end
 local getShortenCommand = function(args)
     local command = args[1]
 	
-    if agrs[1] == 'st' then
+    if args[1] == 'st' then
 	command = 'setStatus'
-    elseif agrs[1] == 'b' then
+    elseif args[1] == 'b' then
 	command = 'bringClient'
-    elseif agrs[1] == 'ss' then
+    elseif args[1] == 'ss' then
 	command = 'signSay'
-    elseif agrs[1] == 'hs' then
+    elseif args[1] == 'hs' then
 	command = 'hideSign'
-    elseif agrs[1] == 't' then
+    elseif args[1] == 't' then
 	command = 'teleportClient'
-    elseif agrs[1] == 'm' then
+    elseif args[1] == 'm' then
 	command = 'message'
-    elseif agrs[1] == 'l' then
+    elseif args[1] == 'l' then
 	command = 'leave'
-    elseif agrs[1] == 'lt' then
+    elseif args[1] == 'lt' then
 	command = 'loopTeleport'
-    elseif agrs[1] == 'ylt' then
+    elseif args[1] == 'ylt' then
 	command = 'unloopTeleport'
-    elseif agrs[1] == 'kill' then
+    elseif args[1] == 'kill' then
 	command = 'k'
-    elseif agrs[1] == 'kb' then
+    elseif args[1] == 'kb' then
 	command = 'killBoss'
-    elseif agrs[1] == 'r' then
+    elseif args[1] == 'r' then
 	command = 'reset'
     end
 
