@@ -30,6 +30,16 @@ local getArgs = function(commandString)
 	return {usernameSep}
     end
 end
+
+local getExePlayer = function(playerIdString)
+    for id, player in ipairs(players:GetPlayers()) do
+        if player.UserId == tonumber(playerIdString) then
+            return player
+        end
+    end
+
+    return
+end
   
 local warnError = function(warnReason)
     if client.Backpack:FindFirstChild('Sign') then
@@ -118,17 +128,6 @@ local matchPlayer = function(playerName)
     for id, player in ipairs(players:GetPlayers()) do
 	if string.lower(player.Name):match(string.lower(playerName)) then
             return player, player.Name
-        end
-    end
-
-    warnError('COMMAND ERROR: Invalid Player')
-    return
-end
-
-local getExePlayer = function(playerIdString)
-    for id, player in ipairs(players:GetPlayers()) do
-        if player.UserId == tonumber(playerIdString) then
-            return player
         end
     end
 
