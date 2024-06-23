@@ -374,7 +374,7 @@ mainMessages.ChildAdded:Connect(function(chatMessage)
 	    local command = getShortenCommand(args)
         
             local s, e = pcall(function()
-		if isValidCommand(command) then
+		if isValidCommand(commandArray, command) then
                     commandArray[command](args)
 		else
 		    warnError('COMMAND ERROR: Invalid Command | "'..command..'" is not a vaild command.')
