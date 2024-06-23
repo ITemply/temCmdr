@@ -117,6 +117,10 @@ local getShortenCommand = function(args)
 		command =  'authUser'
 	elseif args[1] == 'da' then
 		command =  'deAuthUser'
+	elseif args[1] == 'ar' then
+		command =  'athReq'
+	elseif args[1] == 'p' then
+		command =  'prefix'
 	end
 
 	return command
