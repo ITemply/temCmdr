@@ -8,11 +8,14 @@ Stopping work on this cuz I don't feel like exploiting anymore atm.
 
 Take the code stated below and paste it into your executor. Then put in your main accounts userId. Remember, this bot requires 2 or more accounts to function with one being a high level. Once you have your userId of the account you wish to execute commands on, run the code on your "bot" account and let it function. This code should allow the user added to the authorization to control the "bot" account via chat commands.
 
+Yes, you can use this with one client but it is not reccomended. Paste YOUR userId where the authedUsers is and you will be able to executor commands and use your client for them. 
+
 ```lua
 local loadData = {
     ['authedUsers'] = {'525570442', '123'}, -- put your user id here
     ['prefix'] = ';', -- sets the prefix of the command module
-    ['authReq'] = true -- if disabled anyone can use commands
+    ['authReq'] = true, -- if disabled anyone can use commands
+    ['warnErrors'] = true -- dissable if you do not want errors showing
 }
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/ITemply/temCmdr/main/main.lua'))(loadData)
