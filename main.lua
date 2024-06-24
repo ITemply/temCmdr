@@ -18,6 +18,7 @@ local commandArray = {}
 
 local activeStatus = true
 local needAuthorization = true
+local warnErrors = true
 local canTeleport = false
 
 local currentExecutor = ''
@@ -45,36 +46,38 @@ local getExePlayer = function(playerIdString)
 end
 
 local warnError = function(warnReason)
-	if client.Backpack:FindFirstChild('Sign') then
-		local tool = client.Backpack:WaitForChild('Sign')
+	if warnErrors then
+		if client.Backpack:FindFirstChild('Sign') then
+			local tool = client.Backpack:WaitForChild('Sign')
+			local humanoid = client.Character.Humanoid
+			humanoid:EquipTool(tool)
+	
+			local warnArgs = {[1] = warnReason}
+	
+			client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
+		elseif client.Character:FindFirstChild('Sign') then
+			local warnArgs = {[1] = warnReason}
+	
+			client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
+		else
+			local toolArgs = {[1] = 'Sign', [2] = 'sign'}
+	
+			toolEvent:FireServer(unpack(toolArgs))
+			local tool = client.Backpack:WaitForChild('Sign')
+			local humanoid = client.Character.Humanoid
+			humanoid:EquipTool(tool)
+	
+			local warnArgs = {[1] = warnReason}
+			client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
+		end
+	
+		client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
+	
+		task.wait(7)
+	
 		local humanoid = client.Character.Humanoid
-		humanoid:EquipTool(tool)
-
-		local warnArgs = {[1] = warnReason}
-
-		client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
-	elseif client.Character:FindFirstChild('Sign') then
-		local warnArgs = {[1] = warnReason}
-
-		client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
-	else
-		local toolArgs = {[1] = 'Sign', [2] = 'sign'}
-
-		toolEvent:FireServer(unpack(toolArgs))
-		local tool = client.Backpack:WaitForChild('Sign')
-		local humanoid = client.Character.Humanoid
-		humanoid:EquipTool(tool)
-
-		local warnArgs = {[1] = warnReason}
-		client.PlayerGui.ToolsGUI.Frame.btnFrame.enterBtn:WaitForChild('Event'):FireServer(unpack(warnArgs))
+		humanoid:UnequipTools()
 	end
-
-	client.Character.HumanoidRootPart.CFrame = getExePlayer(currentExecutor).Character.HumanoidRootPart.CFrame
-
-	task.wait(7)
-
-	local humanoid = client.Character.Humanoid
-	humanoid:UnequipTools()
 end
 
 local hideError = function()
@@ -174,6 +177,7 @@ local loadOutsideArgs = function(outsideArgs)
 	authorized = outsideArgs[1]['authedUsers']
 	prefix = outsideArgs[1]['prefix']
 	needAuthorization = outsideArgs[1]['authReq']
+	warnErrors = outsideArgs[1]['warnErrors']
 end
 
 loadOutsideArgs(outsideData)
