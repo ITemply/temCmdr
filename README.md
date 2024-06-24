@@ -4,7 +4,7 @@ Tem Cmdr is a command execution script for Roblox because I got bored with javas
 
 Stopping work on this cuz I don't feel like exploiting anymore atm.
 
-<h2>How 2 Use</h2>
+<h2>How To Use</h2>
 
 Take the code stated below and paste it into your executor. Then put in your main accounts userId. Remember, this bot requires 2 or more accounts to function with one being a high level. Once you have your userId of the account you wish to execute commands on, run the code on your "bot" account and let it function. This code should allow the user added to the authorization to control the "bot" account via chat commands.
 
